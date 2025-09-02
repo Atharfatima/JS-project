@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Athar Fatima — Frontend Developer Portfolio</title>
+  <meta name="description" content="Portfolio of Athar Fatima — Frontend Developer (React, JavaScript, HTML, CSS). Projects, skills, resume, and contact." />
+  <meta name="theme-color" content="#111827" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Athar Fatima — Frontend Developer" />
+  <meta property="og:description" content="Projects, skills, and experience. Available for frontend roles." />
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='100%25' height='100%25' fill='%23111827'/%3E%3Ctext x='50%25' y='52%25' fill='%23ffffff' font-family='Arial' font-size='64' text-anchor='middle'%3EAthar%20Fatima%3C/text%3E%3C/svg%3E" />
+  <meta property="og:url" content="https://example.com" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root{
+      --bg:#0b1220; --panel:#0f172a; --text:#e5e7eb; --muted:#94a3b8;
+      --brand:#22c55e; --brand-600:#16a34a; --accent:#38bdf8; --border:#1f2937;
+      --chip:#0b1220; --card:#0b1020; --ring:rgba(34,197,94,.35);
+    }
+    .light{ --bg:#f8fafc; --panel:#ffffff; --text:#0f172a; --muted:#475569; --brand:#16a34a; --brand-600:#15803d; --accent:#0284c7; --border:#e2e8f0; --chip:#f1f5f9; --card:#ffffff; --ring:rgba(2,132,199,.25);} 
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Arial; background:radial-gradient(1200px 600px at 10% -10%, rgba(56,189,248,.08), transparent), var(--bg); color:var(--text)}
+    img{max-width:100%; display:block}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:auto; padding:24px}
+
+    header.nav{position:sticky; top:0; z-index:50; backdrop-filter:blur(10px); background:rgba(15,23,42,.7); border-bottom:1px solid var(--border)}
+    .light header.nav{background:rgba(255,255,255,.75)}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 24px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .logo{width:36px; height:36px; border-radius:12px; background:conic-gradient(from 210deg,var(--brand),var(--accent)); box-shadow:0 8px 24px rgba(0,0,0,.25)}
+    nav a{padding:8px 10px; border-radius:10px; border:1px solid transparent}
+    nav a:hover{border-color:var(--border); background:var(--chip)}
+    .btn{padding:10px 14px; border-radius:12px; border:1px solid var(--border); background:var(--panel); cursor:pointer; transition:.2s; box-shadow:0 2px 0 rgba(0,0,0,.2)}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--accent)); color:#fff; border:none}
+
+    .hero{display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center; padding:44px 24px 14px}
+    .hero h1{font-size:clamp(30px,5vw,52px); margin:0 0 8px; line-height:1.05}
+    .hero p{color:var(--muted); margin:0 0 18px}
+    .tag{display:inline-block; padding:6px 10px; border-radius:999px; background:linear-gradient(135deg,var(--brand),var(--accent)); color:#0b1220; font-weight:700}
+    .card{background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:16px}
+
+    .section{padding:30px 24px}
+    .section h2{font-size:clamp(22px,3.2vw,32px); margin:0 0 8px}
+    .sub{color:var(--muted); margin:0 0 16px}
+    .grid{display:grid; gap:16px}
+    .grid.cards{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+    .skill{padding:8px 10px; border-radius:999px; background:var(--chip); border:1px solid var(--border)}
+    .project{display:flex; flex-direction:column; gap:10px}
+    .project img{border-radius:12px; border:1px solid var(--border)}
+    .controls{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .muted{color:var(--muted)}
+    .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:12px; background:var(--chip); border:1px solid var(--border); padding:2px 6px; border-radius:6px}
+
+    .timeline{border-left:2px solid var(--border); padding-left:14px}
+    .timeline .item{position:relative; margin:14px 0}
+    .timeline .item:before{content:""; position:absolute; left:-10px; top:6px; width:12px; height:12px; background:linear-gradient(135deg,var(--brand),var(--accent)); border-radius:50%}
+
+    footer{padding:28px 24px; border-top:1px solid var(--border); color:var(--muted)}
+    .pill{padding:8px 10px; border:1px solid var(--border); border-radius:999px; background:var(--chip); cursor:pointer}
+    .pill.active{background:linear-gradient(135deg,var(--brand),var(--accent)); color:#0b1220; border-color:transparent}
+
+    .contact-links a{display:inline-flex; gap:8px; align-items:center; padding:10px 12px; border:1px solid var(--border); border-radius:12px}
+
+    @media (max-width: 920px){ .hero{grid-template-columns:1fr} }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Athar Fatima",
+    "jobTitle":"Frontend Developer",
+    "url":"https://example.com",
+    "sameAs":["https://www.linkedin.com/", "https://github.com/"],
+    "knowsAbout":["JavaScript","React","HTML","CSS","Accessibility"],
+    "email":"mailto:hello@example.com"
+  }
+  </script>
+</head>
+<body>
+  <header class="nav" role="navigation">
+    <div class="nav-inner container">
+      <a class="brand" href="#top" aria-label="Home">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Athar Fatima</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="controls">
+        <button id="themeToggle" class="btn" aria-pressed="false" aria-label="Toggle theme">🌙</button>
+        <a id="cvBtn" href="#" class="btn primary" download>Download CV</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero" aria-label="Intro">
+      <div>
+        <span class="tag">Frontend Developer</span>
+        <h1>Hi, I’m <u>Athar Fatima</u>. I craft clean, accessible web apps.</h1>
+        <p>Specializing in <strong>JavaScript</strong>, <strong>React</strong>, and modern <strong>HTML/CSS</strong>. I love building fast, responsive UIs with a focus on UX and accessibility.</p>
+        <div class="controls">
+          <a href="#projects" class="btn primary">View Projects</a>
+          <a href="#contact" class="btn">Hire Me</a>
+          <button id="copyEmail" class="btn" title="Copy email to clipboard">
+            <span id="emailText">hello@example.com</span>
+          </button>
+        </div>
+        <p class="muted" style="margin-top:8px">Tip: Press <span class="kbd">/</span> to search projects.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Highlights</h3>
+        <ul class="muted" style="margin:0; padding-left:18px">
+          <li>Built 6+ mini apps using React and vanilla JS.</li>
+          <li>Strong in CSS layout (Grid/Flexbox) and responsive design.</li>
+          <li>Focus on performance, a11y, and clean code.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <p class="sub">Filter and search. Each card links to a live demo and repo.</p>
+      <div class="controls" style="margin-bottom:8px">
+        <input id="search" class="btn" placeholder="Search projects… (e.g., ecommerce, API, React)" style="width:100%; text-align:left"/>
+        <div id="filters" class="controls">
+          <button class="pill active" data-filter="all">All</button>
+          <button class="pill" data-filter="react">React</button>
+          <button class="pill" data-filter="js">JavaScript</button>
+          <button class="pill" data-filter="api">API</button>
+          <button class="pill" data-filter="ui">UI</button>
+        </div>
+      </div>
+      <div class="grid cards" id="projectGrid"></div>
+    </section>
+
+    <section id="skills" class="section" aria-labelledby="skills-title">
+      <h2 id="skills-title">Skills</h2>
+      <p class="sub">Core stack & tools I use.</p>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+        <div class="card"><strong>Frontend</strong><p class="muted">HTML5, CSS3, JS (ES6+), React, DOM, Fetch API</p></div>
+        <div class="card"><strong>UI/UX</strong><p class="muted">Responsive design, Flexbox, Grid, Accessibility, Animations</p></div>
+        <div class="card"><strong>Tools</strong><p class="muted">Git/GitHub, VS Code, Chrome DevTools, NPM</p></div>
+        <div class="card"><strong>Soft Skills</strong><p class="muted">Communication, problem solving, documentation</p></div>
+      </div>
+      <div class="controls" style="margin-top:10px; flex-wrap:wrap">
+        <span class="skill">JavaScript</span><span class="skill">React</span><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">Git</span><span class="skill">Accessibility</span><span class="skill">Responsive</span>
+      </div>
+    </section>
+
+    <section id="about" class="section" aria-labelledby="about-title">
+      <h2 id="about-title">About Me</h2>
+      <div class="card">
+        <p class="muted">I’m a frontend developer passionate about building useful interfaces. I enjoy turning ideas into polished experiences and continuously learning new web technologies.</p>
+      </div>
+    </section>
+
+    <section id="experience" class="section" aria-labelledby="exp-title">
+      <h2 id="exp-title">Experience & Education</h2>
+      <div class="timeline">
+        <div class="item">
+          <h3 style="margin:0">Frontend Developer — Freelance</h3>
+          <p class="muted" style="margin:4px 0 0">2024 — Present · Remote</p>
+          <p class="muted">Built landing pages and small web apps for local clients using JS and React.</p>
+        </div>
+        <div class="item">
+          <h3 style="margin:0">BS — Computer Science (Virtual University of Pakistan)</h3>
+          <p class="muted" style="margin:4px 0 0">Ongoing</p>
+        </div>
+        <div class="item">
+          <h3 style="margin:0">Certifications</h3>
+          <p class="muted">Cisco C++ Essentials 1 (CS201), various JS courses and projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p class="sub">Reach out for roles, internships, or freelance work.</p>
+      <div class="card contact-links controls">
+        <a id="emailLink" href="mailto:hello@example.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/><path d="m22 6-10 7L2 6" stroke="currentColor" stroke-width="2"/></svg> Email</a>
+        <a href="https://wa.me/00000000000" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 11.5A8.5 8.5 0 1 1 11.5 3 8.5 8.5 0 0 1 20 11.5Z" stroke="currentColor" stroke-width="2"/><path d="M7.5 19 5 21.5" stroke="currentColor" stroke-width="2"/></svg> WhatsApp</a>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+        <a href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <footer>
+      <p>© <span id="year"></span> Athar Fatima • Portfolio. Built with semantic HTML, modern CSS, and vanilla JS.</p>
+    </footer>
+  </footer>
+
+  <script>
+    // ===== Utilities & Storage =====
+    const storage = { get(k,f){ try{ return JSON.parse(localStorage.getItem(k)) ?? f }catch{ return f } }, set(k,v){ localStorage.setItem(k, JSON.stringify(v)) } };
+
+    // ===== Theme Toggle =====
+    const themeToggle = document.getElementById('themeToggle');
+    const applyTheme = (mode) => { document.documentElement.classList.toggle('light', mode==='light'); themeToggle.textContent = mode==='light' ? '☀️' : '🌙'; themeToggle.setAttribute('aria-pressed', String(mode==='light')); };
+    applyTheme(storage.get('theme','dark'));
+    themeToggle.addEventListener('click', ()=>{ const next = document.documentElement.classList.contains('light') ? 'dark':'light'; storage.set('theme', next); applyTheme(next); });
+
+    // ===== Year =====
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== Projects Data (Edit this to add your projects) =====
+    const PROJECTS = [
+      { title:'Mini E‑Commerce UI', tags:['react','ui'], img:'https://placehold.co/600x360/png', desc:'Product grid, cart, filters. Responsive and accessible.', demo:'#', repo:'#' },
+      { title:'Weather App (API)', tags:['js','api'], img:'https://placehold.co/600x360/png', desc:'Fetches live weather with async/await and error states.', demo:'#', repo:'#' },
+      { title:'Portfolio Template', tags:['ui','js'], img:'https://placehold.co/600x360/png', desc:'Single‑file portfolio (this!). Clean CSS and components.', demo:'#', repo:'#' },
+      { title:'Quiz App', tags:['js'], img:'https://placehold.co/600x360/png', desc:'LocalStorage score, keyboard friendly, ARIA live regions.', demo:'#', repo:'#' },
+      { title:'React Tasks Board', tags:['react','ui'], img:'https://placehold.co/600x360/png', desc:'Kanban‑style board with drag‑and‑drop (keyboard support).', demo:'#', repo:'#' }
+    ];
+
+    // ===== Render Projects =====
+    const grid = document.getElementById('projectGrid');
+    const renderProjects = (list) => {
+      grid.innerHTML = '';
+      list.forEach(p => {
+        const card = document.createElement('article');
+        card.className = 'card project';
+        card.setAttribute('data-tags', p.tags.join(' '));
+        card.innerHTML = `
+          <img alt="${p.title}" src="${p.img}" loading="lazy"/>
+          <div>
+            <h3 style="margin:0 0 6px">${p.title}</h3>
+            <p class="muted" style="margin:0 0 10px">${p.desc}</p>
+            <div class="controls">
+              <a class="btn" target="_blank" rel="noopener" href="${p.demo}">Live Demo</a>
+              <a class="btn" target="_blank" rel="noopener" href="${p.repo}">Source</a>
+              ${p.tags.map(t=>`<span class='skill'>${t}</span>`).join('')}
+            </div>
+          </div>`;
+        grid.appendChild(card);
+      })
+    };
+    renderProjects(PROJECTS);
+
+    // ===== Filter + Search =====
+    const search = document.getElementById('search');
+    const filterBtns = Array.from(document.querySelectorAll('#filters .pill'));
+    let activeFilter = 'all';
+    const applyFilters = () => {
+      const q = (search.value||'').toLowerCase().trim();
+      const cards = Array.from(grid.children);
+      cards.forEach(card => {
+        const tags = card.getAttribute('data-tags');
+        const text = card.textContent.toLowerCase();
+        const matchTag = activeFilter==='all' || tags.includes(activeFilter);
+        const matchText = !q || text.includes(q);
+        card.style.display = (matchTag && matchText) ? '' : 'none';
+      })
+    };
+    search.addEventListener('input', applyFilters);
+    filterBtns.forEach(btn=> btn.addEventListener('click', ()=>{
+      filterBtns.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      applyFilters();
+    }));
+    window.addEventListener('keydown', (e)=>{ if(e.key === '/' && document.activeElement !== search){ e.preventDefault(); search.focus(); } });
+
+    // ===== Copy Email Button =====
+    const copyBtn = document.getElementById('copyEmail');
+    const emailText = document.getElementById('emailText');
+    copyBtn.addEventListener('click', async ()=>{
+      try{ await navigator.clipboard.writeText(emailText.textContent); copyBtn.textContent = 'Email copied!'; setTimeout(()=> copyBtn.innerHTML = `<span id="emailText">${emailText.textContent}</span>`, 1200) }catch{ alert('Could not copy email') }
+    })
+
+    // ===== Dynamic CV (optional) =====
+    // Replace with your actual resume file path or Google Drive direct link.
+    const cvBtn = document.getElementById('cvBtn');
+    cvBtn.href = 'resume_Athar_Fatima.pdf';
+
+    // ===== Update mailto link if you change email here =====
+    const EMAIL = 'hello@example.com'; // <- change once and it updates in two places
+    document.getElementById('emailLink').href = `mailto:${EMAIL}`;
+    document.getElementById('emailText').textContent = EMAIL;
+  </script>
+</body>
+</html>
